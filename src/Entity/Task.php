@@ -29,11 +29,10 @@ class Task
         return $this->description;
     }
 
-    public function setDescription(string $description): static
+    public function setDescription(string $description): void
     {
         $this->description = $description;
 
-        return $this;
     }
 
     public function getDueDate(): ?\DateTimeImmutable
@@ -41,10 +40,8 @@ class Task
         return $this->dueDate;
     }
 
-    public function setDueDate(?\DateTimeImmutable $dueDate): static
+    public function setDueDate(?\DateTimeImmutable $dueDate): void
     {
         $this->dueDate = $dueDate;
-
-        return $this;
     }
 }
