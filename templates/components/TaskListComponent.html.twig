@@ -1,1 +1,11 @@
-123
+<div {{ attributes }}>
+    <h1>ToDo list</h1>
+    {% for task in this.tasks %}
+    <div>
+        <h3>{{ task.description }}</h3>
+        <div>
+            {{ task.dueDate|date }}
+        </div>
+    </div>
+    {% endfor %}
+</div>

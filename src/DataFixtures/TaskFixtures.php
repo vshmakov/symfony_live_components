@@ -3,10 +3,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Task;
-use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class TaskFixtures extends AbstractFixture
+class TaskFixtures extends Fixture
 {
     private const TASKS = [
         'Wash my car',
@@ -24,11 +24,14 @@ class TaskFixtures extends AbstractFixture
             $task->setDueDate($now->add(
                 new \DateInterval(
                     sprintf(
-                        'P%sd',
+                        'P%sD',
                         $key + 1
                     )
                 ),
             ));
+            $manager->persist($task);
         }
+
+    $manager->flush();
     }
 }
