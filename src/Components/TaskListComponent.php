@@ -13,6 +13,7 @@ use Symfony\UX\LiveComponent\DefaultActionTrait;
 class TaskListComponent
 {
     use DefaultActionTrait;
+use WithRerenderTriggerTrait;
 
     public function __construct(
         private TaskRepository $taskRepository,
@@ -26,6 +27,6 @@ class TaskListComponent
     public function getTasks(): array
     {
         return $this->taskRepository
-            ->findAll();
+            ->findBy([], ['dueDate' => 'asc']);
     }
 }

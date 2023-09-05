@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
+use Symfony\UX\LiveComponent\ComponentToolsTrait;
 use Symfony\UX\LiveComponent\ComponentWithFormTrait;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\UX\LiveComponent\ValidatableComponentTrait;
@@ -18,9 +19,9 @@ use Symfony\UX\LiveComponent\ValidatableComponentTrait;
 #[AsLiveComponent]
 class TaskComponent extends AbstractController
 {
+    use ComponentToolsTrait;
     use ComponentWithFormTrait;
     use DefaultActionTrait;
-    use ValidatableComponentTrait;
 
     #[LiveProp(writable: true)]
     #[Assert\Valid]
@@ -43,11 +44,11 @@ class TaskComponent extends AbstractController
     #[LiveAction]
     public function save(EntityManagerInterface $entityManager): void
     {
-        $this->validate();
+        $this->submitForm();
 
         $this->isEditing = false;
 
         $entityManager->flush();
+        $this->emitUp(Events::RERENDER_COMPONENT->name, componentName: 'TaskListComponent');
     }
 }
-
