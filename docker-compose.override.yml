@@ -19,6 +19,11 @@ services:
       # Ensure that host.docker.internal is correctly defined on Linux
       - host.docker.internal:host-gateway
 
+  node:
+    build: ./docker/node
+    volumes:
+      - .:/var/www
+
   caddy:
     command: [ "caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile", "--watch" ]
     build:
