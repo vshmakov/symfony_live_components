@@ -6,11 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomepageController extends AbstractController
+class TaskController extends AbstractController
 {
-    #[Route('/', name: 'homepage')]
+    #[Route('/task', name: 'tasks')]
     public function index(): Response
     {
-        return $this->render('homepage.html.twig');
+        return $this->render('task/index.html.twig');
     }
 }

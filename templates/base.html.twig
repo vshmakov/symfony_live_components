@@ -10,6 +10,19 @@
     {% endblock %}
 </head>
 <body>
+<ul>
+    <li>
+        <a href="{{ path('homepage') }}">
+            Homepage
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('tasks') }}">
+            ToDo list
+        </a>
+    </li>
+</ul>
+
 {% block body %}{% endblock %}
 
 {% block javascripts %}
