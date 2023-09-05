@@ -22,7 +22,7 @@ class TaskComponent extends AbstractController
     use DefaultActionTrait;
     use ValidatableComponentTrait;
 
-    #[LiveProp(writable: ['description'])]
+    #[LiveProp(writable: true)]
     #[Assert\Valid]
     public Task $task;
 
@@ -33,7 +33,6 @@ class TaskComponent extends AbstractController
     {
         return $this->createForm(TaskComponentType::class, $this->task);
     }
-
 
     #[LiveAction]
     public function activateEditing(): void
