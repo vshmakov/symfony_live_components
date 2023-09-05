@@ -1,11 +1,9 @@
 <div {{ attributes }}>
     <h1>ToDo list</h1>
     {% for task in this.tasks %}
-    <div>
-        <h3>{{ task.description }}</h3>
-        <div>
-            {{ task.dueDate|date }}
-        </div>
-    </div>
+        {{ component('TaskComponent', {
+            task: task,
+            key: task.id,
+        }) }}
     {% endfor %}
 </div>
