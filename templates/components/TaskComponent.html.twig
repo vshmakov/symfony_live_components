@@ -1,6 +1,21 @@
 <div {{ attributes }}>
-    <h3>{{ description }}</h3>
-    <div>
-        {{ dueDate|date }}
-    </div>
+    {% if not isEditing %}
+        <div>
+            <h3>{{ task.description }}</h3>
+            <div>
+                {{ task.dueDate|date }}
+            </div>
+            <div>
+                <button
+                    data-action="live#action"
+                    data-action-name="activateEditing"
+                >
+                    Edit
+                </button>
+            </div>
+
+        </div>
+    {% else %}
+        {{ form(form) }}
+    {% endif %}
 </div>
