@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Task;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +14,11 @@ class TaskComponentType extends AbstractType
     {
         $builder
             ->add('description')
-            ->add('dueDate');
+            ->add('dueDate', DateTimeType::class, [
+                'date_widget' => 'single_text',
+                'input' => 'datetime_immutable',
+            ])
+            ->add('save', SaveComponentButtonType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

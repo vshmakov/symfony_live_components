@@ -47,7 +47,6 @@ class TaskComponent extends AbstractController
 
         $this->isEditing = false;
 
-
         $entityManager->flush();
     }
 }
