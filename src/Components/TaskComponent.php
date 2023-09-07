@@ -23,7 +23,7 @@ final class TaskComponent extends AbstractController
     use ComponentWithFormTrait;
     use DefaultActionTrait;
 
-    #[LiveProp(writable: true)]
+    #[LiveProp()]
     #[Assert\Valid]
     public Task $task;
 
