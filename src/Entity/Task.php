@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repository\TaskRepository;
@@ -32,7 +34,6 @@ class Task
     public function setDescription(string $description): void
     {
         $this->description = $description;
-
     }
 
     public function getDueDate(): ?\DateTimeImmutable

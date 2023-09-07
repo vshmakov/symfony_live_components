@@ -1,24 +1,23 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Components;
 
 use App\Entity\Task;
 use App\Repository\TaskRepository;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
-use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
 #[AsLiveComponent]
-class TaskListComponent
+final class TaskListComponent
 {
     use DefaultActionTrait;
-use WithRerenderTriggerTrait;
+    use WithRerenderTriggerTrait;
 
     public function __construct(
         private TaskRepository $taskRepository,
-    )
-    {
+    ) {
     }
 
     /**
@@ -27,6 +26,7 @@ use WithRerenderTriggerTrait;
     public function getTasks(): array
     {
         return $this->taskRepository
-            ->findBy([], ['dueDate' => 'asc']);
+            ->findBy([], ['dueDate' => 'asc'])
+        ;
     }
 }

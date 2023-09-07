@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Form;
 
 use App\Entity\Task;
@@ -8,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TaskComponentType extends AbstractType
+final class TaskComponentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -18,7 +20,8 @@ class TaskComponentType extends AbstractType
                 'date_widget' => 'single_text',
                 'input' => 'datetime_immutable',
             ])
-            ->add('save', SaveComponentButtonType::class);
+            ->add('save', SaveComponentButtonType::class)
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

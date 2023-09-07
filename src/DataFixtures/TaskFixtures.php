@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DataFixtures;
 
 use App\Entity\Task;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class TaskFixtures extends Fixture
+final class TaskFixtures extends Fixture
 {
     private const TASKS = [
         'Wash my car',
@@ -32,6 +34,6 @@ class TaskFixtures extends Fixture
             $manager->persist($task);
         }
 
-    $manager->flush();
+        $manager->flush();
     }
 }
