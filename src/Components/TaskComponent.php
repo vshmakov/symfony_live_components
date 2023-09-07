@@ -13,7 +13,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
-use Symfony\UX\LiveComponent\ComponentToolsTrait;
 use Symfony\UX\LiveComponent\ComponentWithFormTrait;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
@@ -50,6 +49,6 @@ final class TaskComponent extends AbstractController
         $this->isEditing = false;
 
         $entityManager->flush();
-        $this->emitUp(Events::RERENDER_COMPONENT->name, componentName: 'TaskListComponent');
+        $this->rerender(TaskListComponent::class);
     }
 }
