@@ -51,4 +51,12 @@ final class TaskComponent extends AbstractController
         $entityManager->flush();
         $this->rerender(TaskListComponent::class);
     }
+
+    #[LiveAction]
+    public function remove(EntityManagerInterface $entityManager): void
+    {
+        $entityManager->remove($this->task);
+        $entityManager->flush();
+        $this->rerender(TaskListComponent::class);
+    }
 }
