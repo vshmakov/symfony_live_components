@@ -1,5 +1,7 @@
 <div {{ attributes }}>
     <h1>ToDo list</h1>
+    {{ component('CreateTaskComponent') }}
+
     {% for task in this.tasks %}
         {{ component('TaskComponent', {
             task: task,

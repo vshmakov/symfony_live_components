@@ -1,0 +1,14 @@
+<div {{ attributes }}>
+    {% if not isCreating %}
+        <div>
+            <button
+                data-action="live#action"
+                data-action-name="activateCreating"
+            >
+                Create
+            </button>
+        </div>
+    {% else %}
+        {{ form(form) }}
+    {% endif %}
+</div>
